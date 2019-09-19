@@ -11,3 +11,20 @@ sudo curl -x 172.19.1.179:3128 -L "https://github.com/docker/compose/releases/do
 
 docker-compose up -d --build
 
+
+
+
+helm install \
+-f ./providers/private.yaml \
+--name operator \
+--namespace operator \
+--set operator.enabled=true \
+./confluent-operator
+
+
+helm install \
+-f ./providers/private.yaml \
+--name zookeeper \
+--namespace operator \
+--set zookeeper.enabled=true \
+./confluent-operator
